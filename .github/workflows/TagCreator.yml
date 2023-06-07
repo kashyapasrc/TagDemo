@@ -43,7 +43,7 @@ jobs:
             pwd
             ls
             git fetch --all
-            git tag ${{inputs.preprod_tag}} ${{inputs.stg_tag}} 
+            git tag -f ${{inputs.preprod_tag}} ${{inputs.stg_tag}} 
             git push origin ${{inputs.preprod_tag}}
         shell: bash
       
