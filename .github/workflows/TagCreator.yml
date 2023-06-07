@@ -56,7 +56,8 @@ jobs:
             git tag ${{inputs.preprod_tag}} ${{inputs.stg_tag}} 
             git tag --list
             git status
-            git show-ref --hash  -- ${{inputs.preprod_tag}}
+            VERSION = git show-ref --hash  -- ${{inputs.preprod_tag}}
+            echo "$RELEASE_VERSION" >> $GITHUB_ENV
       
      
         shell: bash
@@ -65,7 +66,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          target_commitish: git show-ref --hash  -- ${{inputs.preprod_tag}}
+          target_commitish: ${{ env.RELEASE_VERSION }}
           tag_name: ${{inputs.preprod_tag}}
           name: ${{inputs.preprod_tag}}
           draft: false
