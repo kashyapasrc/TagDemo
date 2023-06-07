@@ -36,6 +36,8 @@ jobs:
      # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
       - name: Create Preprod TAG
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
