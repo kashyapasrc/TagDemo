@@ -1,0 +1,47 @@
+# This is a basic workflow that is manually triggered
+
+name: PreProd Tag Builder
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      stg_tag:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'UAT Tag'
+        # Default value if no value is explicitly provided
+        default: ''
+        # Input has to be provided for the workflow to run
+        required: true
+        # The data type of the input
+        type: string
+
+      preprod_tag:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Preprod tag'
+        # Default value if no value is explicitly provided
+        default: ''
+        # Input has to be provided for the workflow to run
+        required: true
+        # The data type of the input
+        type: string
+    
+
+jobs:
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+     # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v2
+      - name: Create Preprod TAG
+        run : | 
+            pwd
+            ls
+            git fetch --all
+            git tag ${{inputs.preprod_tag}} ${{inputs.stg_tag}} 
+            git push origin ${{inputs.preprod_tag}}
+        shell: bash
+      
