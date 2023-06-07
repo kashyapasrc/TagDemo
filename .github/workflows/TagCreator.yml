@@ -43,6 +43,7 @@ jobs:
             pwd
             ls
             git fetch --all
+            git tag --list
             git tag -a ${{inputs.preprod_tag}} ${{inputs.stg_tag}} -m "Preprod tag creation"
             git push origin ${{inputs.preprod_tag}}
         shell: bash
