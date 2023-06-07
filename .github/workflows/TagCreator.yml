@@ -56,7 +56,17 @@ jobs:
             git tag ${{inputs.preprod_tag}} ${{inputs.stg_tag}} 
             git tag --list
             git status
-            git push origin ${{inputs.preprod_tag}}
-           
-        shell: bash
+            git show-ref --hash  -- ${{inputs.preprod_tag}}
       
+     
+        shell: bash
+      - name: Create Release
+        uses: thomaseizinger/create-release@1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          target_commitish: git show-ref --hash  -- ${{inputs.preprod_tag}}
+          tag_name: ${{inputs.preprod_tag}}
+          name: ${{inputs.preprod_tag}}
+          draft: false
+          prerelease: true
