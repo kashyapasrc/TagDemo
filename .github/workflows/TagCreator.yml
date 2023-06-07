@@ -42,8 +42,10 @@ jobs:
         run : | 
             pwd
             ls
-            echo ${git fetch --all}
-            echo ${git tag --list}
+            git fetch --all
+            git --version
+            git status
+            git tag --list
            
         shell: bash
       
