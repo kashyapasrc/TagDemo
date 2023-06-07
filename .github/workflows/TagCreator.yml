@@ -37,6 +37,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Create Preprod TAG
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run : | 
             pwd
             ls
