@@ -41,8 +41,8 @@ jobs:
       
       - name: Create Preprod TAG
         env:
-          #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
 
         run : | 
             pwd
@@ -55,6 +55,7 @@ jobs:
             
             git tag ${{inputs.preprod_tag}} ${{inputs.stg_tag}} 
             git tag --list
+            git status
             git push origin ${{inputs.preprod_tag}}
            
         shell: bash
