@@ -45,17 +45,11 @@ jobs:
           
 
         run : | 
-            pwd
-            ls
-            #git config --global user.email "kashyap.asrc@gmail.com"
-            #git config --global user.name "Release BOT"
-            git fetch --all
-            git --version
-            git status
             
+            git fetch --all
+
             git tag ${{inputs.preprod_tag}} ${{inputs.stg_tag}} 
             git tag --list
-            git status
 
             echo "$RELEASE_VERSION" >> git show-ref --hash  -- ${{inputs.preprod_tag}}
       
