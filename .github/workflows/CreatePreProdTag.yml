@@ -2,11 +2,12 @@ name: "Create a preprod tag from STG tag"
 
 on:
   workflow_dispatch:
-    inputs : 
+    inputs:
       stg_tag:
-      required: true
-      default: ''
-      type: string
+        required: true
+        default: ''
+        description: 'STG tag'
+        type: string
 jobs:
   build:
     runs-on: ubuntu-latest
