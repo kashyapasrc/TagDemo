@@ -1,0 +1,13 @@
+name "Deploy preprod build"
+
+on:
+  push:
+    tags:
+      - 'pre_prod_*'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name : Run a one -line script
+      run : echo PreProd build deployed
