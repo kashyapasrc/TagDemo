@@ -2,6 +2,7 @@ name: Create a preprod tag from STG tag
 
 on:
   workflow_dispatch:
+    # Inputs the workflow accepts.
     inputs:
       stg_tag:
         required: true
