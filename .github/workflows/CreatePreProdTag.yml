@@ -1,4 +1,4 @@
-name: "Create a preprod tag from STG tag"
+name: Create a preprod tag from STG tag
 
 on:
   workflow_dispatch:
