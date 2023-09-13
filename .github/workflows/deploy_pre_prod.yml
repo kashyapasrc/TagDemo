@@ -1,9 +1,15 @@
-name "Deploy preprod build"
+name: "Deploy Pre Production build"
 
+#
+#   IMPORTANT TO KNOW
+#
+# - This workflow runs every time there are changes to `release` branch.
+#
 on:
   push:
     tags:
       - 'pre_prod_*' # -> Pre Production release
+
 jobs:
   build:
     runs-on: ubuntu-latest
