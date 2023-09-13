@@ -3,7 +3,7 @@ name "Deploy preprod build"
 on:
   push:
     tags:
-      - 'pre_prod_*'
+      - 'pre_prod_*' # -> Pre Production release
 jobs:
   build:
     runs-on: ubuntu-latest
