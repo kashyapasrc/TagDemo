@@ -44,10 +44,10 @@ jobs:
             release_hash=$(git show-ref --hash  -- "$PRE_PROD_TAG")
             echo "RELEASE_VERSION=$release_hash" >> $GITHUB_ENV
             
-            echo "PRE_PROD_TAG_"$PRE_PROD_TAG >> $GITHUB_ENV
+            echo "PRE_PROD_TAG_=$PRE_PROD_TAG" >> $GITHUB_ENV
             
-            echo ${{ env.RELEASE_VERSION }}
-            echo ${{ env.PRE_PROD_TAG_ }}
+            # echo ${{ env.RELEASE_VERSION }}
+            # echo ${{ env.PRE_PROD_TAG_ }}
             echo "hash"
      
         shell: bash
