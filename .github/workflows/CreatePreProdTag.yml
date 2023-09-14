@@ -43,8 +43,8 @@ jobs:
             git tag --list
             release_hash=$(git show-ref --hash  -- "$PRE_PROD_TAG")
             echo "RELEASE_VERSION=$release_hash" >> $GITHUB_ENV
-            PRE_PROD_TAG >> $GITHUB_ENV
-            echo "$PRE_PROD_TAG_" >> ${PRE_PROD_TAG}
+            #PRE_PROD_TAG >> $GITHUB_ENV
+            #echo "$PRE_PROD_TAG_" >> ${PRE_PROD_TAG}
             echo $RELEASE_VERSION
             echo "hash"
      
