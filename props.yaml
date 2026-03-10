@@ -12,7 +12,7 @@ configurations:
   uat:
     version_name: 10.2.9
     version_code: 32
-    release_notes: STG_CHANGELOG.md
+    release_notes: uat_changelog.md
 
   pre_prod:
     version_name: 10.2.0.3
