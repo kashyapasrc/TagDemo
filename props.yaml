@@ -1,0 +1,20 @@
+configurations:
+  dev:
+    version_name: 10.2.9
+    version_code: 31
+    release_notes: DEV_CHANGELOG.md
+
+  qa:
+    version_name: 10.2.9
+    version_code: 31
+    release_notes: QA_CHANGELOG.md
+
+  stg:
+    version_name: 10.2.9
+    version_code: 32
+    release_notes: STG_CHANGELOG.md
+
+  pre_prod:
+    version_name: 10.2.0.3
+    version_code: 220
+    release_notes: PREPROD_CHANGELOG.md
