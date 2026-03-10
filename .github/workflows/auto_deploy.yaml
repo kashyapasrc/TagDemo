@@ -30,6 +30,7 @@ jobs:
           VERSION=$(yq e ".configurations[\"$ENV\"].version_name" props.yaml)
           CHANGELOG_FILE=$(./yq e ".configurations[\"$ENV\"].release_notes" props.yaml)
           RELEASE_NOTES=$(awk "/## $VERSION/{flag=1;next}/## /{flag=0}flag" "$CHANGELOG_FILE")
+          echo "ls -la"
           echo "$RELEASE_NOTES"
           echo $VERSION
         shell: bash
