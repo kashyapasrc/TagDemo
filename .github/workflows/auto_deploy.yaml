@@ -29,7 +29,10 @@ jobs:
           ENV="${{ github.event.inputs.environment }}"
           VERSION=$(yq e ".configurations[\"$ENV\"].version_name" props.yaml)
           CHANGELOG_FILE=$(./yq e ".configurations[\"$ENV\"].release_notes" props.yaml)
-          echo "ls -la"
+          if [ ! -f "$CHANGELOG_FILE" ]; then
+            echo "ERROR: Changelog file not found!"
+            exit 1
+          fi
           RELEASE_NOTES=$(awk "/## $VERSION/{flag=1;next}/## /{flag=0}flag" "$CHANGELOG_FILE")
           
           echo "$RELEASE_NOTES"
