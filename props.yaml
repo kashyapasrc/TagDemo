@@ -9,7 +9,7 @@ configurations:
     version_code: 31
     release_notes: QA_CHANGELOG.md
 
-  stg:
+  uat:
     version_name: 10.2.9
     version_code: 32
     release_notes: STG_CHANGELOG.md
