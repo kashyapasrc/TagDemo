@@ -1,0 +1,38 @@
+name: "Deploy STG and Pre-prod"
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        description: Select environment
+        options:
+          - uat
+          - pre_prod
+jobs:
+  deploy:
+    name: "Deploy to STG and Pre-prod"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Initialize mandatory git config
+        run: |
+          git config --global user.email "
+          git config --global user.name "Release BOT"
+        shell: bash
+      - name: Download yq locally
+        run: |
+          wget -q https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O yq
+          chmod +x yq
+      - name: YQ - pick version from props.yaml
+        run:
+          ENV="${{ github.event.inputs.environment }}"
+          VERSION=$(yq e ".configurations[\"$ENV\"].version_name" props.yaml)
+          RELEASE_NOTES=$(yq e ".configurations[\"$ENV\"].release_notes" props.yaml)
+          echo "$RELEASE_NOTES"
+          echo $VERSION
+        shell: bash
