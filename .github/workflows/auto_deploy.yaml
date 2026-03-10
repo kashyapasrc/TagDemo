@@ -19,11 +19,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Initialize mandatory git config
-        run: |
-          git config --global user.email "
-          git config --global user.name "Release BOT"
-        shell: bash
+     
       - name: Download yq locally
         run: |
           wget -q https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O yq
