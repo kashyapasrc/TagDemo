@@ -33,7 +33,7 @@ jobs:
             echo "ERROR: Changelog file not found!"
             exit 1
           fi
-          RELEASE_NOTES=$(awk "/## $VERSION/{flag=1;next}/## /{flag=0}flag" "$CHANGELOG_FILE")
+          RELEASE_NOTES=$(awk "/## \[$VERSION\]/{flag=1;next}/^## /{flag=0}flag" "$CHANGELOG_FILE")
           
           echo "$RELEASE_NOTES"
           echo $VERSION
