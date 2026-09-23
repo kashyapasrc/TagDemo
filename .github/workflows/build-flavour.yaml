@@ -35,3 +35,8 @@ jobs:
               exit 1
               ;;
           esac
+      - name: Debug
+        run: |
+            echo "Branch = $GITHUB_REF_NAME"
+            echo "Environment = ${{ steps.config.outputs.ENVIRONMENT }}"
+            
