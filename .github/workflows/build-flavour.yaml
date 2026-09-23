@@ -1,0 +1,37 @@
+name: "Deploy dev build"
+
+on:
+  push:
+    branches: [ main,tst ]
+    
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  ENVIRONMENT: dev
+
+jobs:
+  build:
+    name: Build and Deploy to Firebase
+    runs-on: macos-latest
+    
+
+    steps:
+      
+      - name: Determine Flavor
+        id: config
+        run: |
+          case "${GITHUB_REF_NAME}" in
+            main)
+              echo "ENVIRONMENT=dev" >> "$GITHUB_OUTPUT"
+              ;;
+
+            tst)
+              echo "ENVIRONMENT=tst" >> "$GITHUB_OUTPUT"
+              ;;
+            *)
+              echo "Unknown branch: ${GITHUB_REF_NAME}"
+              exit 1
+              ;;
+          esac
